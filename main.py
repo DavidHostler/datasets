@@ -2,7 +2,6 @@ import numpy as np
 from sentence_transformers import SentenceTransformer 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
-
 doc_a = 'What is the meaning of life?'
 doc_b = 'What do you think the meaning of life is?'
 
@@ -20,4 +19,4 @@ combined_doc = doc_a + doc_b
 embed_combined_doc = model.encode(combined_doc)
 embed_combined_doc /= np.sqrt(embed_combined_doc.dot(embed_combined_doc))
 
-print(embed_combined_doc.dot(sum_of_embeddings))
+print('COSINE SIMILARITY: {}{}'.format(embed_combined_doc.dot(sum_of_embeddings) * 100, '%'))
